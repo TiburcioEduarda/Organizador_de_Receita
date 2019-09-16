@@ -1,0 +1,43 @@
+html, body{ 
+	user-select: none;
+	background-color: #363636;
+	color: #FFFAFA;
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+#menu1 ul li{
+	display:inline;
+	margin: 0;
+	list-style: none;
+}
+
+#menu1 ul li a{
+	margin-top: 47px;
+	padding:5px 45px;
+	display: inline-block;
+
+	color: 	#C0C0C0;
+	text-decoration: none;
+}
+
+#menu1 ul li a:hover {
+	color: 	#D3D3D3;
+	text-decoration: underline;
+
+}
+
+.footer {
+	margin-top: 200px;
+	background-color: transparent;
+	border-top:3px solid #D3D3D3;
+	font-size: 18px;
+}
+
+
+	

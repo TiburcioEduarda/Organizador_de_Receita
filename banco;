@@ -1,0 +1,11 @@
+create database cozinha;
+use cozinha;
+
+create table if not exists tbreceita (
+`id` int(5) not null auto_increment,
+`nomer` varchar(600) not null,
+`ingredientes` varchar(600) not null,
+`preparo` varchar(600) not null,
+`obs` varchar(600) not null,
+primary key (`id`)
+);
