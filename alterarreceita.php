@@ -1,49 +1,53 @@
-<HTML>
+﻿<?php include 'head.php'; 
+include 'receita.class.php';
+include_once('conexao.php');
 
-<HEAD>
-<TITLE> Site de culinário  </TITLE>
-</HEAD>
+$receita = new Receita();
 
-<FONT FACE="algerian" SIZE=20 COLOR="white">   
-<MARQUEE BEHAVIOR=scroll WIDTH=100% BGCOLOR=#0080FF> Receitas (ALTERAR) </MARQUEE>
-<br>
+$id=$_GET['id'];
 
-<BODY BGCOLOR="#08298A">
-<FONT FACE="arial" SIZE=5>
+$item=$receita->getFinal($id);
 
-<BR>
+foreach($item as $dados):
 
-<center> Alterar Receitas  </center>
+?>
 
-<hr size=7 color"#0404B4">
 
-<br> 
+
+<font size="7"> ALTERAR </font>
+
+<br> <br> <br>
+
+<FORM method="post">
+	
+<!-- <b> Código </b> <br> <input type="number" name="id" value="<?php echo $dados['id']; ?>" readonly> <br> <br> -->
+
+<b> Nome da Receita: </b> <br> <input type="text"  name="nomer" size="40" maxlength="60" style="width:500px" value="<?php echo $dados['nomer']; ?>" > <br> <br>
+
+<b> Ingredientes: </b> <br> <input type="text" name="ingredientes"  style="width:500px" value="<?php echo $dados['ingredientes']; ?>">  </input> <br> <br>
+
+<b> Modo de Preparo: </b> <br> <input type="text" name="preparo"  style="width:500px" value="<?php echo $dados['preparo']; ?>">  </input> <br> <br>
+
+<b> Observações: </b> <br> <input type="text" name="obs"  style="width:500px" value="<?php echo $dados['obs']; ?>">  </input> <br> <br>
+<input type="submit">
+</form>
+<input type='button' onclick="window.location='consultarReceita.php';" value="Voltar">
 
 <?php
 
-include_once('conexao.php');
+endforeach;
 
-$id = $_POST['id'];
+if (isset($_POST['nomer'])) {
 $nomer = $_POST['nomer'];
 $ingredientes = $_POST['ingredientes'];
 $preparo = $_POST['preparo'];
 $obs = $_POST['obs'];
 
-$sqlupdate = "update tbreceita set nomer='".$nomer."' ,ingredientes='".$ingredientes."' ,preparo='".$preparo."' ,obs= $obs where id= $id";
+$receita->alterar($id, $nomer, $ingredientes, $preparo, $obs);
 
-$resultado = @mysql_query($conxecao, $sqlupdate);
-if (!$resultado){
-	die ('Query Inválida: ' . @mysqli_error($conxecao));
-} else {
-	echo "Receita Alterada com Sucesso";
+header("Location: escolha.php");
 }
-mysql_close($conxecao);
-
 ?>
-
-<br><br>
-
-<input type="button" onclick="window.location='escolha.html';" value="Voltar">
 
 </body>
 </html>

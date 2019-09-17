@@ -19,7 +19,7 @@ body {
 
 #menu1 ul li a{
 	margin-top: 47px;
-	padding:5px 45px;
+	padding:5px 170px;
 	display: inline-block;
 
 	color: 	#C0C0C0;
@@ -33,7 +33,7 @@ body {
 }
 
 .footer {
-	margin-top: 200px;
+	margin-top: 100px;
 	background-color: transparent;
 	border-top:3px solid #D3D3D3;
 	font-size: 18px;

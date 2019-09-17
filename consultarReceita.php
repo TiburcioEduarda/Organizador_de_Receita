@@ -1,71 +1,31 @@
-﻿<?php include 'head.php'; 
+<?php 
+include 'head.php'; 
 include_once 'conexao.php';
 include 'receita.class.php';
 
 $receita = new Receita();
+
+$id = $_GET['id'];
+
+$item=$receita->getFinal($id);
+foreach($item as $r):
+
 ?>
 
-<table border="1" width="auto">
-    <tr>
-        <th>ID</th>
-        <th>NOME</th>
-        <th>VER</th>
-        <th>FUNCOES</th>
-    </tr>
 
-   <?php
+<font size="7"> CONSULTA </font>
 
-	$lista=$receita->consulta();
+<br> <br> <br>
 
-    foreach($lista as $item):
-    $id = $item['id'];
-    ?>
-    <tr>
-        <td><?php echo $item['id']; ?></td>
-        <td><?php echo $item['nomer']; ?></td>
-        <td><a href="receita.php?id=<?php echo $item['id']; ?> ">Ver</a></td>
-        <td><a href="alterar.php?id=<?php echo $item['id']; ?> ">EDITAR</a></td>
-    </tr>
-    <?php endforeach; 
-exit;
-    ?>
-</table>
+<b> Código </b> <br> <input type="number" style="width:550px" value="<?php echo $r["id"]; ?>" readonly> <br> <br>
 
+<b> Nome da Receita: </b> <br> <input type="text" maxlength="60" style="width:550px" value="<?php echo $r["nomer"]; ?>" readonly> <br> <br>
 
+<b> Ingredientes: </b> <br> <textarea rows="6" cols="76" style="resize: nome;" readonly> <?php echo $r["ingredientes"]; ?> </textarea> <br> <br>
 
+<b> Modo de Preparo: </b> <br> <textarea rows="6" cols="76" style="resize: nome;" readonly> <?php echo $r["preparo"]; ?> </textarea> <br> <br>
 
+<b> Observações: </b> <br> <textarea rows="6" cols="76" style="resize: nome;" readonly> <?php echo $r["obs"]; ?> </textarea> <br> <br> <br>
+<?php endforeach  ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <form name="produto" action="consultarreceita.php" method="POST">
-
-<center>
-<B> Código: </B> <br> <br>
-<INPUT TYPE="TEXT" SIZE=40 MAXLENGTH=60 NAME="id" PLACEHOLDER="Código" STYLE="width:550PX"> <p>
-
-<br>
-<hr size="3" color="#C0C0C0">
-<br>
-
-<input type="submit" value="Enviar">
-<input type="reset" value="Apagar">
-</center>
+<input type='button' onclick="window.location='escolha.php';" value="Voltar">

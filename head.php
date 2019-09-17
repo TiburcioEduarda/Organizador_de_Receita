@@ -13,8 +13,7 @@
 <div id="menu1">
     	<ul>
     		<li> <a href = "incluirReceita.php"> Cadastro de Receitas </a> </li>
-    		<li> <a href = "excluirReceita.php"> Excluir Receitas </a> </li>
-    		<li> <a href = "consultarReceita.php"> Receitas </a> </li>
+    		<li> <a href = "escolha.php"> Receitas </a> </li>
     		
         </ul>
     </div>
